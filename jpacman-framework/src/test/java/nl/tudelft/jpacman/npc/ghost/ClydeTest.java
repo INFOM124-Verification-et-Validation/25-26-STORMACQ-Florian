@@ -103,15 +103,15 @@ public class ClydeTest {
     @Test
     void testClydeMovesAwayWhenCloseAndPathFree() {
         String[] map = {"######", 
-                        "#C   #", 
-                        "#P   #", 
                         "#    #", 
+                        "#C#  #", 
+                        "#P   #", 
                         "#    #", 
                         "######"};
         setUp(map);
         Optional<Direction> move = clyde.nextAiMove();
         assertThat(move).isPresent();
-        assertThat(move.get()).isEqualTo(Direction.EAST);
+        assertThat(move.get()).isEqualTo(Direction.NORTH);
     }
 
     // 2. Distance < 8, Path blocked => Empty direction
@@ -204,16 +204,16 @@ public class ClydeTest {
     @Test
     void testClydeMovesAwayWhen8AndPathFree() {
         String[] map = {"########", 
-                        "#       #",
-                        "#   C   #",
-                        "#       #",
-                        "#       #",
-                        "#       #",
-                        "#       #",
-                        "#       #",
-                        "#       #",
-                        "#       #",
-                        "#   P   #",
+                        "#      #",
+                        "#  C   #",
+                        "#      #",
+                        "#      #",
+                        "#      #",
+                        "#      #",
+                        "#      #",
+                        "#      #",
+                        "#      #",
+                        "#  P   #",
                         "########"};
         setUp(map);
         Optional<Direction> move = clyde.nextAiMove();
@@ -226,19 +226,19 @@ public class ClydeTest {
     @Test
     void testClydeMovesAwayWhen8AndNoPath(){
         String[] map = {"#########", 
-                        "#C#      #",
-                        "#       #",
-                        "#       #",
-                        "#       #",
-                        "#       #",
-                        "#       #",
-                        "#       #",
-                        "#       #",
+                        "###C#####",
+                        "#########",
+                        "#########",
+                        "#########",
+                        "#########",
+                        "#########",
+                        "#########",
+                        "#########",
                         "#P      #",
                         "#########"};
         setUp(map);
         Optional<Direction> move = clyde.nextAiMove();
-        assertThat(move.isEmpty());
+        assertThat(move).isEmpty();
         assertThat(move).isNotPresent();
     }
 
