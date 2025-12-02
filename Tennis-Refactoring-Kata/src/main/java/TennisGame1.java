@@ -1,15 +1,27 @@
-
+/**
+ * Implementation of Tennis Game scoring system.
+ * Follows the standard tennis scoring rules: Love, Fifteen, Thirty, Forty, Deuce, Advantage, Win.
+ */
 public class TennisGame1 implements TennisGame {
     
     private TennisPlayer player1;
     private TennisPlayer player2;
 
+    /**
+     * Creates a new Tennis Game with two players.
+     * @param player1Name Name of the first player
+     * @param player2Name Name of the second player
+     */
     public TennisGame1(String player1Name, String player2Name) {
         this.player1 = new TennisPlayer(player1Name);
         this.player2 = new TennisPlayer(player2Name);
     }
 
-    public void wonPoint(String playerName){
+    /**
+     * Records a point won by the specified player.
+     * @param playerName Name of the player who won the point
+     */
+    public void wonPoint(String playerName) {
         TennisPlayer player = player1.getPlayer(playerName);
         if (player == null) {
             player = player2.getPlayer(playerName);
@@ -17,13 +29,19 @@ public class TennisGame1 implements TennisGame {
         player.wonPoint();
     }
 
+    /**
+     * Gets the current score of the tennis game.
+     * @return String representation of the current score
+     */
     public String getScore() {
-
         TennisScore tennisScore = new TennisScore(player1, player2);
         
         return tennisScore.getScoreTerm();
     }
 
+    /**
+     * Represents a tennis player with name and score.
+     */
     private class TennisPlayer { 
         private String name;
         private int score;
@@ -53,6 +71,9 @@ public class TennisGame1 implements TennisGame {
         }
     }
 
+    /**
+     * Handles tennis scoring logic and score display.
+     */
     private class TennisScore {
         private int player1Score;
         private int player2Score;
