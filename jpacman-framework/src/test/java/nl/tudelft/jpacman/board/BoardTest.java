@@ -28,7 +28,8 @@ class BoardTest {
      */
     @Test
     void verifyWidth() {
-        // TODO
+        // Assert
+        assertThat(board.getWidth()).isEqualTo(MAX_WIDTH);
     }
 
     /**
@@ -36,7 +37,8 @@ class BoardTest {
      */
     @Test
     void verifyHeight() {
-        // TODO
+        // Assert
+        assertThat(board.getHeight()).isEqualTo(MAX_HEIGHT);
     }
 
     /**
@@ -51,6 +53,8 @@ class BoardTest {
         "0, 1"
     })
     void testSquareAt(int x, int y) {
-        // TODO
+        // Assert
+        assertThat(board.squareAt(x, y)).isEqualTo(grid[x][y]);
+        assertThat(board.withinBorders(x, y)).isTrue();
     }
 }
