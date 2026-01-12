@@ -62,6 +62,11 @@ public class ImageSprite implements Sprite {
      * @return The new, empty image.
      */
     private BufferedImage newImage(int width, int height) {
+        // Avoid to open a GUI window in headless environments (for testing).
+        if (GraphicsEnvironment.isHeadless()) {
+            return new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        }
+
         GraphicsConfiguration gc = GraphicsEnvironment
             .getLocalGraphicsEnvironment().getDefaultScreenDevice()
             .getDefaultConfiguration();
