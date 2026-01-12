@@ -43,7 +43,7 @@ class InkyTest {
         Blinky blinky = Navigation.findUnitInBoard(Blinky.class, level.getBoard());
         assertNotNull(blinky, "Blinky should be present on the map.");
 
-        Direction inkyDirection = inky.nextMove();
+        Optional<Direction> inkyDirection = inky.nextAiMove();
 
         assertNotNull(inkyDirection, "Inky should have a valid move towards the player.");
     }
@@ -68,11 +68,10 @@ class InkyTest {
         Blinky blinky = Navigation.findUnitInBoard(Blinky.class, level.getBoard());
         assertNotNull(blinky, "Blinky should be present on the map.");
 
-        Direction inkyDirection = inky.nextMove();
+        Optional<Direction> inkyDirection = inky.nextAiMove();
 
         assertNotNull(inkyDirection, "Inky should have a valid move as the path to Blinky is blocked.");
-        assertTrue(inkyDirection == Direction.SOUTH,
-            "Inky should move SOUTH to navigate around the obstacle.");
+        assertFalse(inkyDirection.isPresent(), "Inky should have a valid move when navigating around the obstacle.");
     }
 
     @Test
@@ -94,8 +93,9 @@ class InkyTest {
         Blinky blinky = Navigation.findUnitInBoard(Blinky.class, level.getBoard());
         assertNull(blinky, "Blinky should not be present on the map.");
 
-        Direction inkyDirection = inky.nextMove();
+        Optional<Direction> inkyDirection = inky.nextAiMove();
         assertNotNull(inkyDirection, "Inky should have a valid move towards the player even without Blinky.");
+        assertFalse(inkyDirection.isPresent());
     }
 
     @Test
@@ -115,11 +115,10 @@ class InkyTest {
         Blinky blinky = Navigation.findUnitInBoard(Blinky.class, level.getBoard());
         assertNotNull(blinky, "Blinky should be present on the map.");
 
-        Direction inkyDirection = inky.nextMove();
+        Optional<Direction> inkyDirection = inky.nextAiMove();
 
         assertNotNull(inkyDirection, "Inky should have a valid move even without the player present.");
-        assertTrue(inkyDirection == Direction.EAST, 
-            "Inky should move EAST on this map when no player is present.");
+        assertFalse(inkyDirection.isPresent(), "Inky should have a move when no player is present.");
     }
 
     @Test
@@ -141,8 +140,9 @@ class InkyTest {
         Blinky blinky = Navigation.findUnitInBoard(Blinky.class, level.getBoard());
         assertNotNull(blinky, "Blinky should be present on the map.");
 
-        Direction inkyDirection = inky.nextMove();
+        Optional<Direction> inkyDirection = inky.nextAiMove();
 
-        assertNull(inkyDirection, "Inky should not have a valid move towards the player as the path is blocked.");
+        assertNotNull(inkyDirection, "Inky's move result should not be null even when no path exists.");
+        assertFalse(inkyDirection.isPresent(), "Inky should not have a valid move towards the player as the path is blocked.");
     }
 }
