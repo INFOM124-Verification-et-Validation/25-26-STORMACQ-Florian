@@ -5,16 +5,16 @@ public class TexttestFixture {
         System.out.println("OMGHAI!");
 
         Item[] items = new Item[] {
-                new Item("+5 Dexterity Vest", 10, 20), //
-                new Item("Aged Brie", 2, 0), //
-                new Item("Elixir of the Mongoose", 5, 7), //
-                new Item("Sulfuras, Hand of Ragnaros", 0, 80), //
-                new Item("Sulfuras, Hand of Ragnaros", -1, 80),
-                new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
-                new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
-                new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49),
-                // this conjured item does not work properly yet
-                new Item("Conjured Mana Cake", 3, 6) };
+                new Item(ItemType.NORMAL, 10, 20), // +5 Dexterity Vest
+                new Item(ItemType.AGED_BRIE, 2, 0), // Aged Brie
+                new Item(ItemType.NORMAL, 5, 7), // Elixir of the Mongoose
+                new Item(ItemType.SULFURAS, 0, 80), // Sulfuras, Hand of Ragnaros
+                new Item(ItemType.SULFURAS, -1, 80), // Sulfuras, Hand of Ragnaros
+                new Item(ItemType.BACKSTAGE_PASS, 15, 20), // Backstage passes
+                new Item(ItemType.BACKSTAGE_PASS, 10, 49), // Backstage passes
+                new Item(ItemType.BACKSTAGE_PASS, 5, 49), // Backstage passes
+                new Item(ItemType.NORMAL, 3, 6) // Conjured Mana Cake (treated as normal for now)
+        };
 
         GildedRose app = new GildedRose(items);
 

@@ -38,7 +38,7 @@ A solution is available [here](sportsHallPlanner/solution/SportsHallPlannerTests
 - Introduction to code refactoring in `GildedRose` project and `Tennis-Refactoring-Kata` project
 - Identifying test smells
 
-See [TP5.md](GildedRose/README.md) for details and [Tennis-Refactoring-Kata/README.md](Tennis-Refactoring-Kata/README.md) for details.
+See [TP5.md](GildedRose-Refactoring-Kata/README.md) for details and [Tennis-Refactoring-Kata/README.md](Tennis-Refactoring-Kata/README.md) for details.
 
 ## TP 7 - SonarCloud integration
 
