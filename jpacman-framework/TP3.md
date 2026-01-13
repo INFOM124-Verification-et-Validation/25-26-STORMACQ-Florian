@@ -6,10 +6,24 @@ Analyze the requirements found in `docs/scenarios.md` and derive a decision tabl
 
 |                 |        |       |        |    |
 |-----------------|--------|-------|--------|----|
-| **Collider**    | Ghost  | ??    | ??     | ?? |
+| **Collider**    | Player  | ??    | ??     | ?? |
 | **Collidee**    | Pellet | Ghost | Pellet | ?? |
 | **Consequence** | ??     | ??    | ??     | ?? |
 
+Completed table: 
+
+| Collider | Collidee | Consequence |
+|----------|----------|-------------|
+| Player |  Pellet  | Player moves, earns the point for the pellet and the pellet disappears |
+| Player |  /   | Player moves and do not scores point |
+| Player | Wall | Player does not move |
+| Player | Ghost | Player dies, game over |
+| Player | last pellet | Player moves, earns the point for the pellet and wins the game |
+| | | |
+| Ghost | / | Ghost moves |
+| Ghost | Pellet | Ghost moves, pellet disappears |
+| Ghost (hidding a pellet) | / | Ghost moves and pellet appaired |
+| Ghost | Player | Player dies, the game is over |
 
 Based on the decision table above, derive a JUnit test suite for the `level.PlayerCollisions` class using the **specification-based testing** (see the `analysis-template.md` file) and **structural testing** frameworks. You should be as rigorous as possible here. Think not only of collisions that result in something, but also on collisions where "nothing happens".
 
